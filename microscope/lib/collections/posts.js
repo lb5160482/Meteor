@@ -12,6 +12,23 @@ Posts.deny({
     }
 });
 
+Posts.deny({
+  update: function(userId, post, fieldNames, modifier) {
+    var errors = validatePost(modifier.$set);
+    return errors.title || errors.url;
+  }
+})
+
+validatePost = function (post) {
+  var errors = {};
+  if(!post.title) 
+    errors.title = "Enter title";
+  if(!post.url)
+    errors.url = "Enter URL";
+  return errors;
+}
+
+
 Meteor.methods({
   postInsert: function(postAttributes) {
     check(this.userId, String);
@@ -19,6 +36,11 @@ Meteor.methods({
       title: String,
       url: String
     });
+
+    var errors = validatePost(postAttributes);
+    if (errors.title || errors.url)
+      throw new Meteor.Error('invalid-post','Enter both title and url');
+      // return Session.set('postSubmitErrors', errors);
 
     var postWithSameLink = Posts.findOne({url: postAttributes.url});
     if (postWithSameLink) {

@@ -21,8 +21,16 @@ PostsListController = RouteController.extend({
 	waitOn: function() {
 		return Meteor.subscribe('posts', this.findOPtions());
 	},
+	posts: function() {
+		return Posts.find({}, this.findOPtions());
+	},
 	data: function() {
-		return {posts: Posts.find({}, this.findOPtions())};
+		var hasMore = this.posts().count() === this.postsLimit();
+		var nextPath = this.route.path({postsLimit: this.postsLimit() + this.increment});
+		return {
+			posts: this.posts(),
+			nextPath: hasMore ? nextPath : null
+		};
 	}
 });
 

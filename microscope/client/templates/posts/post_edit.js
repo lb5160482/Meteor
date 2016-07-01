@@ -31,12 +31,12 @@ Template.postEdit.events({
     if (!postWithSameLink) {
       Posts.update(currentPostId, {$set: postProperties}, function(error) {
           if (error) {
-            throwError(error.reason);
+            Errors.throw(error.reason);
           }
       });
     }
     else {
-      return throwError('This link has already been posted');
+      return Errors.throw('This link has already been posted');
     }
     Router.go('postPage', {_id: currentPostId});
   },

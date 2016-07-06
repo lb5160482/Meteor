@@ -35,7 +35,7 @@ PostsListController = RouteController.extend({
 NewPostsController = PostsListController.extend({
 	sort: {submitted: -1,_id: -1},
 	nextPath: function() {
-		return Router.routes.newPostsbestPosts.path({postsLimit: this.postsLimit() + this.increment});
+		return Router.routes.newPosts.path({postsLimit: this.postsLimit() + this.increment});
 	}
 });
 BestPostsController = PostsListController.extend({

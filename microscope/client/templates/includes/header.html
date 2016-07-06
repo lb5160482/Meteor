@@ -7,15 +7,21 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{pathFor 'postsList'}}">Microscope</A>
+			<a class="navbar-brand" href="{{pathFor 'home'}}">Microscope</A>
 		</div>
 		<div class="collapse navbar-collapse" id="navigation">
 			<ul class="nav navbar-nav">
+				<li class="{{activeRouteClass 'home' 'newPosts'}}">
+					<a href="{{pathFor 'newPosts'}}">New</a>
+				</li>
+				<li class="{{activeRouteClass  'bestPosts'}}">
+					<a href="{{pathFor 'bestPosts'}}">Best</a>
+				</li>
 				{{#if currentUser}}
-				<li>
+				<li class="{{activeRouteClass 'postSubmit'}}">
 					<a href="{{pathFor 'postSubmit'}}">Submit Post</a>
 				</li>
-				<li>
+				<li class="dropdown">
 					{{>notifications}}
 				</li>
 				{{/if}}

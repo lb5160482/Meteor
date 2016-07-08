@@ -100,3 +100,7 @@ Solution:
 Solution:
 	StoryBoard should be run on Meteor 1.2.1. It is not supported on Meteor 1.3.4. Just run the app by:
 	$ meteor run android-device --release 1.2.1
+Actually this may not work sometimes. The cordova plugin has been reinstalled which causes the problem.
+So far, we have to delete /.meteor/loca folder every time we run.
+
+Useful for adding twitter account for loging in: https://www.codementor.io/meteor/tutorial/add-twitter-login-system-meteor-application

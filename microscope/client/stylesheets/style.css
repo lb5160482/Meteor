@@ -11,17 +11,19 @@ body {
   background: #eee;
   color: #666666; }
 
-#main {
+#main{
   position: relative;
 }
-.page {
+.page{
   position: absolute;
   top: 0px;
   width: 100%;
 }
 
+
 .navbar {
-  margin-bottom: 10px; }
+  margin-bottom: 10px; 
+}
   /* line 32, ../sass/style.scss */
   .navbar .navbar-inner {
     border-radius: 0px 0px 3px 3px; }

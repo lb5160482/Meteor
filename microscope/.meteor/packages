@@ -26,3 +26,9 @@ ian:accounts-ui-bootstrap-3
 accounts-password
 audit-argument-checks
 check
+coffeescript
+meteor-platform
+insecure
+velocityjs:velocityjs
+less
+ccorcos:transitioner

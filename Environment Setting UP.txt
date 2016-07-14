@@ -104,3 +104,15 @@ Actually this may not work sometimes. The cordova plugin has been reinstalled wh
 So far, we have to delete /.meteor/loca folder every time we run.
 
 Useful for adding twitter account for loging in: https://www.codementor.io/meteor/tutorial/add-twitter-login-system-meteor-application
+6. When running the app on the phone:
+	Manifest merger failed : uses-sdk:minSdkVersion 14 cannot be smaller than version 15 declared in library ...
+Solution:
+	This is because both the facebook4 plugin asks for the minimum SDK version to be 15 but there is a bug in the Crosswalk plugin that will set it to 14.(https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview/commit/cd24c9cf90ed7741b3364cbd8b2b73d9f7dacb93)
+	$ meteor remove crosswalk
+	This will remove the old version of crosswald. Then we need to add the latest version:
+	$ meteor add cordova:mp-cordova-plugin-crosswalk-webview@1.4.0-dev
+	Finally, manually set the minimum SDK version to 15:
+	./mobile-config.js
+		App.setPreference('android-minSdkVersion', '19');
+		
+	However, this may cause other errors(maybe just on Linux), so for testing, I just removed facebook4 and everything works fine.
